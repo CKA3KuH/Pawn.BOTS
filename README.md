@@ -16,7 +16,7 @@
 **Установка:**
 
 
-Распакуйте Pawn.BOTS.rar в папку вашего сервера, и отредактируйте server.cfg:
+Распакуйте Pawn.BOTS в папку вашего сервера, и отредактируйте server.cfg:
 - Подключите pawnbots в конец всех filterscripts.
 - Подключите pawnraknet.so и pawnbots.so в конец всех plugins.
 - Убедитесь, что значение maxnpc в server.cfg не равно 0, можно просто поставить maxnpc 1.
