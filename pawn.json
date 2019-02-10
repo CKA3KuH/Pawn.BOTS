@@ -1,0 +1,22 @@
+{
+    "user": "mrAlexZT",
+    "repo": "Pawn.BOTS",
+    "resources": [
+        {
+            "name": "^Pawn.BOTS-(.*).zip$",
+            "platform": "windows",
+            "archive": true,
+            "includes": ["pawno/include"],
+            "plugins": ["plugins/mysql.dll"]
+        },
+        {
+            "name": "^Pawn.BOTS-(.*).zip$",
+            "platform": "linux",
+            "archive": true,
+            "includes": ["pawno/include"],
+            "plugins": ["plugins/pawnraknet.so", "plugins/pawnbots.so"]
+        }
+    ],
+    "runtime": {
+        "plugins": ["mrAlexZT/Pawn.BOTS"]
+    }
