@@ -75,11 +75,11 @@ stock HexToInt(string[])
 
 stock ShowSetting0(playerid)
 {
-    new string0[60] = "{FFFFFF}", string1[50] = "{FFFFFF}Автоматический онлайн: ";
-	strcat(string1, (gSetting) ? ("{00CC00}Запущен") : ("{FF6600}Остановлен"));
-	strcat(string0, (gSetting) ? ("Остановить") : ("Запустить"));
-	strcat(string0, "\nПерезагрузить\nНастройка\nСтатистика");
-	ShowPlayerDialog(playerid, 4460, DIALOG_STYLE_LIST, string1, string0, "Выбрать", "Закрыть");
+    new string0[60] = "{FFFFFF}", string1[70] = "{FFFFFF}Ubacivanje botova: ";
+	strcat(string1, (gSetting) ? ("{00CC00}Ukljuceno") : ("{FF6600}Iskljuceno"));
+	strcat(string0, (gSetting) ? ("Iskljuci") : ("Ukljuci"));
+	strcat(string0, "\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
+	ShowPlayerDialog(playerid, 4460, DIALOG_STYLE_LIST, string1, string0, "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ");
 	return 1;
 }
 
@@ -87,7 +87,7 @@ stock ShowSetting1(playerid)
 {
 	new string[320] = "{FFFFFF}";
     for(new i; i < 24; i++) format(string, sizeof(string), "%s%i:00 - %i\n", string, i, gAtHour[i]);
-	ShowPlayerDialog(playerid, 4461, DIALOG_STYLE_LIST, "{FFFFFF}Настройка", string, "Выбрать", "Назад");
+	ShowPlayerDialog(playerid, 4461, DIALOG_STYLE_LIST, "{FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", string, "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅ");
 	return 1;
 }
 
@@ -261,8 +261,8 @@ DLG(4460, playerid, response, listitem, inputtext[])
 		case 3:
 		{
 			new string[136];
-			format(string, sizeof(string), "{FFFFFF}Последние время выполнения: %iмс.\nМаксимальное время выполнения: %iмс.\nНастоящих игроков: %i\nФейковых игроков: %i", gTimerLastTick, gTimerMaxTick, gRealCount, gFakeCount);
-		    ShowPlayerDialog(playerid, 4463, DIALOG_STYLE_MSGBOX, "{FFFFFF}Статистика", string, "Назад", "");
+			format(string, sizeof(string), "{FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: %iпїЅпїЅ.\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: %iпїЅпїЅ.\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: %i\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: %i", gTimerLastTick, gTimerMaxTick, gRealCount, gFakeCount);
+		    ShowPlayerDialog(playerid, 4463, DIALOG_STYLE_MSGBOX, "{FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", string, "пїЅпїЅпїЅпїЅпїЅ", "");
 		}
 	}
 	return 1;
@@ -278,7 +278,7 @@ DLG(4461, playerid, response, listitem, inputtext[])
     new string[14] = "{FFFFFF}";
 	valstr(string, listitem);
 	strcat(string, ":00");
-    ShowPlayerDialog(playerid, 4462, DIALOG_STYLE_INPUT, string, "{FFFFFF}", "Принять", "Назад");
+    ShowPlayerDialog(playerid, 4462, DIALOG_STYLE_INPUT, string, "{FFFFFF}", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅ");
     return 1;
 }
 		
@@ -295,7 +295,7 @@ DLG(4462, playerid, response, listitem, inputtext[])
 	    new string[14] = "{FFFFFF}";
 		valstr(string, list);
 		strcat(string, ":00");
-		ShowPlayerDialog(playerid, 4462, DIALOG_STYLE_INPUT, string, "{FFFFFF}", "Принять", "Назад");
+		ShowPlayerDialog(playerid, 4462, DIALOG_STYLE_INPUT, string, "{FFFFFF}", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅ");
 		return 1;
 	}
 	for(new i = (strlen(inputtext) - 1); i >= 0; i--) if(inputtext[i] < '0' || inputtext[i] > '9')
@@ -303,7 +303,7 @@ DLG(4462, playerid, response, listitem, inputtext[])
         new string[14] = "{FFFFFF}";
 		valstr(string, list);
 		strcat(string, ":00");
-		ShowPlayerDialog(playerid, 4462, DIALOG_STYLE_INPUT, string, "{FFFFFF}", "Принять", "Назад");
+		ShowPlayerDialog(playerid, 4462, DIALOG_STYLE_INPUT, string, "{FFFFFF}", "пїЅпїЅпїЅпїЅпїЅпїЅпїЅ", "пїЅпїЅпїЅпїЅпїЅ");
 		return 1;
 	}
 	gAtHour[list] = vall;
@@ -405,8 +405,8 @@ public OnPBotUpdate()
 		}
 		if(IsDialogOpen(playerid, 4463))
 		{
-			format(string, sizeof(string), "{FFFFFF}Последние время выполнения: %iмс.\nМаксимальное время выполнения: %iмс.\nНастоящих игроков: %i\nФейковых игроков: %i", gTimerLastTick, gTimerMaxTick, gRealCount, gFakeCount);
-		    ShowPlayerDialog(playerid, 4463, DIALOG_STYLE_MSGBOX, "{FFFFFF}Статистика", string, "Назад", "");
+			format(string, sizeof(string), "{FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: %iпїЅпїЅ.\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ: %iпїЅпїЅ.\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: %i\nпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ: %i", gTimerLastTick, gTimerMaxTick, gRealCount, gFakeCount);
+		    ShowPlayerDialog(playerid, 4463, DIALOG_STYLE_MSGBOX, "{FFFFFF}пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ", string, "пїЅпїЅпїЅпїЅпїЅ", "");
    		}
 	}
 	if(gTimerDelay) gTimerDelay--;
