@@ -78,8 +78,8 @@ stock ShowSetting0(playerid)
     new string0[60] = "{FFFFFF}", string1[70] = "{FFFFFF}Ubacivanje botova: ";
 	strcat(string1, (gSetting) ? ("{00CC00}Ukljuceno") : ("{FF6600}Iskljuceno"));
 	strcat(string0, (gSetting) ? ("Iskljuci") : ("Ukljuci"));
-	strcat(string0, "\n�������������\n���������\n����������");
-	ShowPlayerDialog(playerid, 4460, DIALOG_STYLE_LIST, string1, string0, "�������", "�������");
+	strcat(string0, "\nIzbaci sve botove\nBroj botova po satu\nInformacije");
+	ShowPlayerDialog(playerid, 4460, DIALOG_STYLE_LIST, string1, string0, !"Odaberi", !"Odustani");
 	return 1;
 }
 
@@ -87,7 +87,7 @@ stock ShowSetting1(playerid)
 {
 	new string[320] = "{FFFFFF}";
     for(new i; i < 24; i++) format(string, sizeof(string), "%s%i:00 - %i\n", string, i, gAtHour[i]);
-	ShowPlayerDialog(playerid, 4461, DIALOG_STYLE_LIST, "{FFFFFF}���������", string, "�������", "�����");
+	ShowPlayerDialog(playerid, 4461, DIALOG_STYLE_LIST, "{FFFFFF}Broj botova po satu", string, !"Odaberi", !"Odustani");
 	return 1;
 }
 
@@ -97,7 +97,7 @@ stock LoadSetting()
 	id = fopen("pawnbots/setting.ini", io_read);
 	if(!id)
 	{
-		print("[PB] file 'setting.ini' error");
+		print("[PB] fajl 'setting.ini' greska");
 		return 0;
 	}
 	fread(id, string, sizeof(string));
@@ -107,7 +107,7 @@ stock LoadSetting()
 	id = fopen("pawnbots/online.ini", io_read);
 	if(!id)
 	{
-		print("[PB] file 'online.ini' error");
+		print("[PB] fajl 'online.ini' greska");
 		return 0;
 	}
 	count = 0;
@@ -121,7 +121,7 @@ stock LoadSetting()
 	id = fopen("pawnbots/score.ini", io_read);
 	if(!id)
 	{
-		print("[PB] file 'score.ini' error");
+		print("[PB] fajl 'score.ini' greska");
 		return 0;
 	}
 	count = 0;
@@ -137,7 +137,7 @@ stock LoadSetting()
 	count = 0;
 	if(!id)
 	{
-		print("[PB] file 'ping.ini' error");
+		print("[PB] fajl 'ping.ini' greska");
 		return 0;
 	}
 	while(fread(id, string, sizeof(string)))
@@ -151,7 +151,7 @@ stock LoadSetting()
 	id = fopen("pawnbots/color.ini", io_read);
 	if(!id)
 	{
-		print("[PB] file 'color.ini' error");
+		print("[PB] fajl 'color.ini' greska");
 		return 0;
 	}
 	count = 0;
@@ -171,7 +171,7 @@ stock LoadSetting()
 	id = fopen("pawnbots/nick.ini", io_read);
 	if(!id)
 	{
-		print("[PB] file 'nick.ini' error");
+		print("[PB] fajl 'nick.ini' greska");
 		return 0;
 	}
 	count = 0;
@@ -191,7 +191,7 @@ stock LoadSetting()
 	id = fopen("pawnbots/admin.ini", io_read);
 	if(!id)
 	{
-		print("[PB] file 'admin.ini' error");
+		print("[PB] fajl 'admin.ini' greska");
 		return 0;
 	}
 	count = 0;
@@ -240,7 +240,7 @@ DLG(4460, playerid, response, listitem, inputtext[])
 	        new File:id = fopen("pawnbots/setting.ini", io_write);
 			if(!id)
 			{
-				print("[PB] file 'setting.ini' error");
+				print("[PB] fajl 'setting.ini' greska");
 				return 1;
 			}
 		 	new string[4];
@@ -261,8 +261,8 @@ DLG(4460, playerid, response, listitem, inputtext[])
 		case 3:
 		{
 			new string[136];
-			format(string, sizeof(string), "{FFFFFF}��������� ����� ����������: %i��.\n������������ ����� ����������: %i��.\n��������� �������: %i\n�������� �������: %i", gTimerLastTick, gTimerMaxTick, gRealCount, gFakeCount);
-		    ShowPlayerDialog(playerid, 4463, DIALOG_STYLE_MSGBOX, "{FFFFFF}����������", string, "�����", "");
+			format(string, sizeof(string), "Last tick: %ims.\nMax tick: %ims.\nBroj igraca: %i\nBroj botova: %i", gTimerLastTick, gTimerMaxTick, gRealCount, gFakeCount);
+		    ShowPlayerDialog(playerid, 4463, DIALOG_STYLE_MSGBOX, !"Informacije", string, !"OK", "");
 		}
 	}
 	return 1;
@@ -278,7 +278,7 @@ DLG(4461, playerid, response, listitem, inputtext[])
     new string[14] = "{FFFFFF}";
 	valstr(string, listitem);
 	strcat(string, ":00");
-    ShowPlayerDialog(playerid, 4462, DIALOG_STYLE_INPUT, string, "{FFFFFF}", "�������", "�����");
+    ShowPlayerDialog(playerid, 4462, DIALOG_STYLE_INPUT, string, "{FFFFFF}", !"Odaberi", !"Odustani");
     return 1;
 }
 		
@@ -295,7 +295,7 @@ DLG(4462, playerid, response, listitem, inputtext[])
 	    new string[14] = "{FFFFFF}";
 		valstr(string, list);
 		strcat(string, ":00");
-		ShowPlayerDialog(playerid, 4462, DIALOG_STYLE_INPUT, string, "{FFFFFF}", "�������", "�����");
+		ShowPlayerDialog(playerid, 4462, DIALOG_STYLE_INPUT, string, "{FFFFFF}", !"Odaberi", !"Odustani");
 		return 1;
 	}
 	for(new i = (strlen(inputtext) - 1); i >= 0; i--) if(inputtext[i] < '0' || inputtext[i] > '9')
@@ -303,7 +303,7 @@ DLG(4462, playerid, response, listitem, inputtext[])
         new string[14] = "{FFFFFF}";
 		valstr(string, list);
 		strcat(string, ":00");
-		ShowPlayerDialog(playerid, 4462, DIALOG_STYLE_INPUT, string, "{FFFFFF}", "�������", "�����");
+		ShowPlayerDialog(playerid, 4462, DIALOG_STYLE_INPUT, string, "{FFFFFF}", !"Odaberi", !"Odustani");
 		return 1;
 	}
 	gAtHour[list] = vall;
@@ -311,7 +311,7 @@ DLG(4462, playerid, response, listitem, inputtext[])
 	new File:id = fopen("pawnbots/online.ini", io_write);
 	if(!id)
 	{
-		print("[PB] file 'online.ini' error");
+		print("[PB] fajl 'online.ini' greska");
 		return 1;
 	}
  	new string[122];
@@ -380,7 +380,7 @@ public OnPBotCheckNick(s, nick[])
 		gNickC{s} = 0;
 		gNickCplId[s] = -1;
 		Iter_Remove(fNickC, s);
-		printf("[PB] error busy nick '%s'", gNick[s]);
+		printf("[PB] greska busy nick '%s'", gNick[s]);
 	}}
 	return 1;
 }
@@ -405,8 +405,8 @@ public OnPBotUpdate()
 		}
 		if(IsDialogOpen(playerid, 4463))
 		{
-			format(string, sizeof(string), "{FFFFFF}��������� ����� ����������: %i��.\n������������ ����� ����������: %i��.\n��������� �������: %i\n�������� �������: %i", gTimerLastTick, gTimerMaxTick, gRealCount, gFakeCount);
-		    ShowPlayerDialog(playerid, 4463, DIALOG_STYLE_MSGBOX, "{FFFFFF}����������", string, "�����", "");
+			format(string, sizeof(string), "Last tick: %ims.\nMax tick: %ims.\nBroj igraca: %i\nBroj botova: %i", gTimerLastTick, gTimerMaxTick, gRealCount, gFakeCount);
+		    ShowPlayerDialog(playerid, 4463, DIALOG_STYLE_MSGBOX, "{FFFFFF}Informacije", string, !"OK", "");
    		}
 	}
 	if(gTimerDelay) gTimerDelay--;
