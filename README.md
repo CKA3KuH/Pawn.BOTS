@@ -1,48 +1,29 @@
-**Описание:**
+Ovo je skripta za plugin "pawnbots". Omogućava automatsko podešavanje sata online prisustva botova.
 
+**Prednosti:**
 
-Это скрипт для плагина pawnbots.
-Присутствует возможность установки автоматического почасового онлайна.
+Neće izbacivati botove i igrače. Botovi zauzimaju slote. Botovi imaju RP nadimke, nasumične nivoe, boje (skinove) i ping. Omogućeno je dodavanje/uklanjanje botova iz igre.
 
+**Instalacija:**
 
-**Преимущества:**
+Raspakujte Pawn.BOTS u folder vašeg servera i uredite server.cfg:
 
-Ботов и игроков не кикает.
-Боты занимают слоты.
-Боты имеют RP никнеймы, рандомные уровни, цвет(клист) и пинг.
-Возможность добавлять/убирать ботов из игры.
+Dodajte pawnbots na kraj svih filterscripts.
+Dodajte pawnraknet.so i pawnbots.so na kraj svih plugins.
+Proverite da li vrednost maxnpc u server.cfg nije 0, jednostavno postavite maxnpc 1. Dodajte #include odmah posle #include <a_samp>, i kompajlirajte mod.
+**Podešavanje:**
 
+Komanda za podešavanje unutar igre je .pbots. Unutar foldera scriptfiles/pawnbots nalazi se 7 fajlova:
 
-**Установка:**
+admin.inc - lista nadimaka koji mogu koristiti komandu za podešavanje unutar igre.
+color.inc - boje (skinovi) za botove.
+lvl.inc - nivoi za botove.
+nick.inc - nadimci za botove.
+ping.inc - ping vrednosti za botove.
+online.inc - podešavanje automatskog sata online prisustva botova (ne uređivati ručno).
+setting.inc - ostala podešavanja (ne uređivati ručno).
+**Napomene:**
 
+Skripta koristi PawnRakNet plugin. Plugin ne postoji za Windows i neće nikada postojati. Hosting provajderi će ili blokirati vas ili zahtevati dodatno plaćanje za dodatni opterećenje, jer svaki bot stvara poseban proces.
 
-Распакуйте Pawn.BOTS в папку вашего сервера, и отредактируйте server.cfg:
-- Подключите pawnbots в конец всех filterscripts.
-- Подключите pawnraknet.so и pawnbots.so в конец всех plugins.
-- Убедитесь, что значение maxnpc в server.cfg не равно 0, можно просто поставить maxnpc 1.
-Подключить #include <pawnbots> сразу после #include <a_samp>, и скомпилировать мод.
-
-
-**Настройка:**
-
-
-Команда настройки из игры .pbots.
-Внутри папки scriptfiles/pawnbots находятся 7 файлов:
-- admin.inc - список никнеймов, которые могут пользоваться настройкой из игры.
-- color.inc - цвета(клисты) для ботов.
-- lvl.inc - уровни для ботов.
-- nick.inc - никнеймы для ботов.
-- ping.inc - пинги для ботов.
-- online.inc - настройка автоматического почасового онлайна ботов (в ручную не редактировать).
-- setting.inc - настройки (в ручную не редактировать).
-
-
-**Заметки:**
-
-
-Скрипт использует PawnRakNet плагин.
-Плагина под windows нет, и не будет никогда.
-Хосты будут либо блокировать вас, либо требовать переплачивать за дополнительную нагрузку, каждый бот создает отдельный процесс.
-
-
-*Автор плагина: urShadow*
+*Autor plugina: urShadow*
